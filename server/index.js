@@ -83,22 +83,23 @@ app.get('/profile', (req, res) => {
 // Form submission route
 app.post('/submit-form', async (req, res) => {
     try {
-        const { email, password, message } = req.body;
+        const { email, password } = req.body;
 
         let customers = [];
         try {
             const data = await fs.readFile(dataPath, 'utf8');
             customers = JSON.parse(data);
         } catch (error) {
+            console.error("Error reading user data:", error)
             customers = [];
         }
 
-        let user = customers.find(u => u.email === email && u.password === password);
-        if (user) {
-            user.messages.push(message);
+        let customer = customers.find(u => u.email === email && u.password === password);
+        if (customer) {
+            // user.messages.push(message)
         } else {
-            user = { email, password, messages: message ? [message] : [] };
-            customers.push(user);
+            customer = { email, password };
+            customers.push(customer);
         }
 
         await fs.writeFile(dataPath, JSON.stringify(customers, null, 2));
@@ -115,25 +116,25 @@ app.post('/sign-in', async (req, res) => {
     // Implementation remains the same
 });
 // Update user route (currently just logs and sends a response)
-app.put('/update-user/:currentName/:currentEmail', async (req, res) => {
+app.put('/update-user/:currentEmail/:currentPassword', async (req, res) => {
     try {
-        const { currentName, currentEmail } = req.params;
-        const { newName, newEmail } = req.body;
-        console.log('Current user:', { currentName, currentEmail });
-        console.log('New user data:', { newName, newEmail });
+        const { currentEmail, currentPassword } = req.params;
+        const { newEmail, newPassword } = req.body;
+        console.log('Current user:', { currentEmail, currentPassword });
+        console.log('New user data:', { newEmail, newPassword });
         const data = await fs.readFile(dataPath, 'utf8');
         if (data) {
-            let users = JSON.parse(data);
-            const userIndex = users.findIndex(user => user.name === currentName && user.email === currentEmail);
-            console.log(userIndex);
-            if (userIndex === -1) {
+            let customers = JSON.parse(data);
+            const customerIndex = customers.findIndex(customer => customer.email === currentEmail && user.password === currentPassword);
+            console.log(customerIndex);
+            if (customerIndex === -1) {
                 return res.status(404).json({ message: "User not found" })
             }
-            users[userIndex] = { ...users[userIndex], name: newName, email: newEmail };
-            console.log(users);
-            await fs.writeFile(dataPath, JSON.stringify(users, null, 2));
+            customers[customerIndex] = { ...customers[customerIndex], email: newEmail, password: newPassword };
+            console.log(customers);
+            await fs.writeFile(dataPath, JSON.stringify(customers, null, 2));
 
-            res.status(200).json({ message: `You sent ${newName} and ${newEmail}` });
+            res.status(200).json({ message: `You sent ${newEmail} and ${newPassword}` });
         }
     } catch (error) {
         console.error('Error updating user:', error);
@@ -143,9 +144,9 @@ app.put('/update-user/:currentName/:currentEmail', async (req, res) => {
 
 
 
-app.delete('/user/:name/:password', async (req, res) => {
+app.delete('/user/:email/:password', async (req, res) => {
     try {
-        const { name, password} = req.params
+        const { email, password } = req.params
         // initalize an empty array of 'users'
         let customers = [];
         // try to read the users.json file and cache as data
@@ -156,9 +157,9 @@ app.delete('/user/:name/:password', async (req, res) => {
             return res.status(404).send('Customers data not found')
         }
         // cache the userIndex based on a matching name and email
-        const userIndex = customers.findIndex(user => user.email === email && user.password === password);
-        console.log(userIndex);
-        if (userIndex === -1) {
+        const customerIndex = customers.findIndex(customer => customer.email === email && customer.password === password);
+        console.log(customerIndex);
+        if (customerIndex === -1) {
             return res.status(404).send('User not found');
         }
         // splice the users array with the intended delete name and email
@@ -181,6 +182,5 @@ app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-// ended off here 10/2/2024
-// ended off here 10/2/2024
+
 
