@@ -39,36 +39,44 @@ app.get('/customers', async (req, res) => {
     }
 });
 
-// About route
-app.get('/about', (req, res) => {
-    res.sendFile('pages/about.html', { root: serverPublic });
-});
-app.get('/sign-in.html', (req, res) => {
-    res.sendFile('pages/sign-in.html', { root: serverPublic });
-});
-app.get('/home.html', (req, res) => {
-    res.sendFile('pages/home.html', { root: serverPublic });
-});
-app.get('/deposit.html', (req, res) => {
-    res.sendFile('pages/deposit.html', { root: serverPublic });
-});
-app.get('/action.html', (req, res) => {
-    res.sendFile('pages/action.html', { root: serverPublic });
-});
-app.get('/'), (req, res) => {
-    res.sendFile('/client/src/img', { root: serverPublic });
-}
+
 
 //Home Route
 app.get('/home', (req, res) => {
     res.sendFile('pages/home.html', { root: serverPublic });
 });
 
+//My Banks Route
+app.get('/my-banks', (req, res) => {
+    res.sendFile('pages/my-banks.html', { root: serverPublic });
+});
 
-// Form route
-// app.get('/form', (req, res) => {
-//     res.sendFile('pages/form.html', { root: serverPublic });
-// });
+//Transfer Funds Route
+app.get('/transfer-funds', (req, res) => {
+    res.sendFile('pages/transfer-funds.html', { root: serverPublic });
+});
+
+//Transaction History Route
+app.get('/transaction-history', (req, res) => {
+    res.sendFile('pages/transaction-history.html', { root: serverPublic });
+});
+
+//Settings Route
+app.get('/settings', (req, res) => {
+    res.sendFile('pages/settings.html', { root: serverPublic });
+});
+
+//Logout Route
+app.get('/logout', (req, res) => {
+    res.sendFile('pages/logout.html', { root: serverPublic });
+});
+
+//Profile Route
+app.get('/profile', (req, res) => {
+    res.sendFile('pages/profile.html', { root: serverPublic });
+});
+
+
 
 
 
