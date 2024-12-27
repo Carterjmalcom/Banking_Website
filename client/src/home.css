@@ -12,8 +12,11 @@
   left: 330px;
   min-height: 100vh;
   background: white;
+}
+.main-oc-animation{
   transition: 0.25s;
 }
+
 .main.active {
   width: calc(100% - 80px);
   left: 80px;
