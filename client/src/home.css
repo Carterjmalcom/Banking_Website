@@ -4,6 +4,9 @@
   box-sizing: border-box;
 }
 
+.bx-menu{
+  color: white;
+}
 body{
   min-height: 100vh;
   overflow-x: hidden;
@@ -29,6 +32,21 @@ body{
 
 .navigation span {
   font-size: 20px;
+}
+
+.toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  z-index: 1;
+}
+
+.toggle:hover{
+  cursor: pointer;
 }
 
 .navigation ul {
@@ -140,6 +158,7 @@ border-radius: 50%;
 box-shadow: 35px -35px 0 10px white;
 pointer-events: none;
 } 
+
 /* main container */
 .main {
   position: absolute;
@@ -149,39 +168,15 @@ pointer-events: none;
   min-height: 100vh;
   background: white;
   transition: 0.5s;
-  /* border: 1px solid orange; */
 }
 .main.active {
   width: calc(100% - 80px);
   left: 80px;
 }
 
-.topbar {
-  width: 100%;
-  height: 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 10px;
-}
 
-.toggle {
-  position: relative;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2.5rem;
-  cursor: pointer;
-}
 
 /*welcome container*/
-.welcome{
-  /* width: 70%; */
-  /* border: 1px solid red; */
-  
-}
 .welcome h1 {
   margin-left: 3rem;
 }
@@ -197,10 +192,6 @@ pointer-events: none;
   margin-top: 20px;
   width: 89%;
 }
-/* .welcome img.active{
-  width: calc(100% - 900px);
-  left: 80px;
-} */
 
 
 
