@@ -6,6 +6,7 @@
 
 .bx-menu{
   color: white;
+  transition: all 0.25s;
 }
 body{
   min-height: 100vh;
@@ -36,17 +37,27 @@ body{
 
 .toggle {
   position: relative;
-  width: 60px;
-  height: 60px;
+  margin: 10px;
+  width: 40px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 2.5rem;
   z-index: 1;
+  border-radius: 10%;
+  transition: all 0.25s;
 }
 
 .toggle:hover{
   cursor: pointer;
+  background-color: white;
+  transition: all 0.25s;
+}
+
+.toggle:hover .bx-menu{
+color: #2c4d71;
+transition: all 0.25s;
 }
 
 .navigation ul {
@@ -62,6 +73,7 @@ body{
   list-style: none;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
+  transition: all 0.25s;
 }
 .navigation ul li:hover,
 .navigation ul li.hovered {
@@ -79,6 +91,7 @@ body{
   display: flex;
   text-decoration: none;
   color: white;
+  transition: all 0.25s;
 }
 
 .navigation ul li:hover a,
@@ -132,7 +145,7 @@ body{
 } */
 
 /*curve*/
-.navigation ul li:hover a::before,
+/* .navigation ul li:hover a::before,
 .navigation ul li.hovered a::before {
 content: "";
 position: absolute;
@@ -144,6 +157,7 @@ background-color: transparent;
 border-radius: 50%;
 box-shadow: 35px 35px 0 10px white;
 pointer-events: none;
+transition: all 0.25s;
 }
 .navigation ul li:hover a::after,
 .navigation ul li.hovered a::after {
@@ -157,7 +171,8 @@ background-color: transparent;
 border-radius: 50%;
 box-shadow: 35px -35px 0 10px white;
 pointer-events: none;
-} 
+transition: all 0.25s;
+}  */
 
 /* main container */
 .main {
@@ -167,7 +182,7 @@ pointer-events: none;
   left: 330px;
   min-height: 100vh;
   background: white;
-  transition: 0.5s;
+  transition: 0.25s;
 }
 .main.active {
   width: calc(100% - 80px);
