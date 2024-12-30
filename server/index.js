@@ -19,10 +19,6 @@ app.use(express.json());
 
 // Routes
 
-// index route
-app.get('/', (req, res) => {
-    res.sendFile('index.html', { root: serverPages });
-});
 
 // customers route
 app.get('/customers', async (req, res) => {
@@ -39,7 +35,9 @@ app.get('/customers', async (req, res) => {
     }
 });
 
-
+app.get('/', (req, res) => {
+    res.sendFile('pages/home.html', { root: serverPages });
+});
 
 //Home Route
 app.get('/home', (req, res) => {
@@ -73,7 +71,12 @@ app.get('/logout', (req, res) => {
 
 //Profile Route
 app.get('/profile', (req, res) => {
-    res.sendFile('pages/profile.html', { root: serverPublic });
+    res.sendFile('pages/sign-in.html', { root: serverPublic });
+});
+
+//Sign Up Route
+app.get('/sign-up', (req, res) => {
+    res.sendFile('pages/sign-up.html', { root: serverPublic });
 });
 
 
@@ -84,7 +87,6 @@ app.get('/profile', (req, res) => {
 app.post('/submit-form', async (req, res) => {
     try {
         const { email, password } = req.body;
-
         let customers = [];
         try {
             const data = await fs.readFile(dataPath, 'utf8');
@@ -94,16 +96,17 @@ app.post('/submit-form', async (req, res) => {
             customers = [];
         }
 
-        let customer = customers.find(u => u.email === email && u.password === password);
+        let customer = customers.find(u => u.email === email);
         if (customer) {
-            // user.messages.push(message)
+            console.log("already an account")
         } else {
             customer = { email, password };
             customers.push(customer);
+            console.log("already an account")
         }
 
         await fs.writeFile(dataPath, JSON.stringify(customers, null, 2));
-        res.redirect('/sign-in');
+        res.status(200).send("Successfully created an account")
 
     } catch (error) {
         console.error('Error processing form:', error);
@@ -181,6 +184,8 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+
 
 
 

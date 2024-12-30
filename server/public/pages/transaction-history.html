@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Info</title>
+    <link rel="stylesheet" href="nav.css" />
     <link rel="stylesheet" href="home.css" />
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
@@ -13,6 +14,9 @@
   <body>
     <div class="container">
       <div class="navigation">
+        <div class="toggle">
+          <i class="bx bx-menu"></i>
+        </div>
         <ul>
           <li>
             <a href="">
@@ -89,150 +93,54 @@
       </div>
 
       <div class="main">
-        <div class="topbar">
-          <div class="toggle">
-            <i class="bx bx-menu"></i>
-          </div>
-        </div>
 
         <div class="welcome">
-          <h1>Welcome <strong>User</strong></h1>
-          <p>Access and manage your account and transactions efficently.</p>
-          <img
-            src="img/94DE6027-9166-48B2-AF1B-B1A6257FBD88_4_5005_c.jpeg"
-            alt=""
-          />
-        </div>
+          <h1>Transaction History</h1>
+          <p>View</p>
+          <table>
+            <thead>
+              <tr>
+                <td>Transaction</td>
+                <td>Amount</td>
+                <td>Status</td>
+                <td>Date</td>
+              </tr>
+            </thead>
 
-        <div class="balance">
-          <div class="recentBalance">
-            <div class="balanceHeader">
-              <h2>Your Balance</h2>
-            </div>
+            <tbody>
+              <tr>
+                <td>Chick-fil-A</td>
+                <td>$40.00</td>
+                <td><span class="status pending">Pending</span></td>
+                <td>October 6th, 2024</td>
+              </tr>
 
-            <div class="cardBalance">
-              <span class="name">Bank Account : Checkings</span>
-              <div class="secPart">
-                <img src="" alt="" />
-                <span class="currentBalance"> Total Current Balance:</span>
-                <span class="total">$11,000</span>
-              </div>
-              <div class="thirdPart">
-                <button type="button">Withdraw</button>
-                <button type="button">
-                  <a href="./deposit.html">Desposit</a>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+              <tr>
+                <td>Apple Watch</td>
+                <td>$399.00</td>
+                <td><span class="status done">Done</span></td>
+                <td>October 4th, 2024</td>
+              </tr>
 
-            <div class="balance">
-                <div class="recentBalance">
-                    <div class="balanceHeader">
-                        <h2>Your Balance</h2>
-                    </div>
+              <tr>
+                <td>In-N-Out Burger</td>
+                <td>$35.00</td>
+                <td><span class="status done">Done</span></td>
+                <td>October 4th, 2024</td>
+              </tr>
 
-                    <div class="cardBalance">
+              <tr>
+                <td>Samsung Galaxty S24</td>
+                <td>$900.35</td>
+                <td><span class="status pending">Pending</span></td>
+                <td>October 1th, 2024</td>
+              </tr>
+            </tbody>
+          </table>
 
-                        <div class="currentInfo">
-                         <h2 class="name">Bank Account : Checkings</h2>
-                         <div class="secPart">
-                                <img src="./img/circle.png" alt="">
-                                <div class="money">
-                                  <span class="currentBalance"> Total Current Balance:</span>
-
-                                  <div class="lana">
-                                  <span class="total">$11,000</span>
-                                  </div>
-                                </div>
-                        </div>
-                    </div>
-                      
-                        <div class="btnBal">
-                        <div class="thirdPart">
-                          <a href="./deposit.html">
-                                <button type="button"> Withdraw</button> 
-                                <button type="button"> Deposit</button> 
-                          </a>
-                         </div>
-
-                        </div>
-                        
-                    </div>
-
-                </div>
-            </div>
-
-            <table>
-              <thead>
-                <tr>
-                  <td>Transaction</td>
-                  <td>Amount</td>
-                  <td>Status</td>
-                  <td>Date</td>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr>
-                  <td>Chick-fil-A</td>
-                  <td>$40.00</td>
-                  <td><span class="status pending">Pending</span></td>
-                  <td>October 6th, 2024</td>
-                </tr>
-
-                <tr>
-                  <td>Apple Watch</td>
-                  <td>$399.00</td>
-                  <td><span class="status done">Done</span></td>
-                  <td>October 4th, 2024</td>
-                </tr>
-
-                <tr>
-                  <td>In-N-Out Burger</td>
-                  <td>$35.00</td>
-                  <td><span class="status done">Done</span></td>
-                  <td>October 4th, 2024</td>
-                </tr>
-
-                <tr>
-                  <td>Samsung Galaxty S24</td>
-                  <td>$900.35</td>
-                  <td><span class="status pending">Pending</span></td>
-                  <td>October 1th, 2024</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </div>
       </div>
     </div>
-
-    <script>
-      // add hovered class to selected list item
-      let list = document.querySelectorAll(".navigation li");
-
-      function activeLink() {
-        list.forEach((item) => {
-          item.classList.remove("hovered");
-        });
-        this.classList.add("hovered");
-      }
-
-      list.forEach((item) => item.addEventListener("mouseover", activeLink));
-
-      // Menu Toggle
-      let toggle = document.querySelector(".toggle");
-      let navigation = document.querySelector(".navigation");
-      let main = document.querySelector(".main");
-
-        toggle.onclick = function () {
-            navigation.classList.toggle("active");
-            main.classList.toggle("active");
-
-            
-        };
-    </script>
+    <script src="./app.js"></script>
 </body>
 </html>
